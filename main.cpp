@@ -54,3 +54,13 @@ TEST_CASE("Test Cards")
 		REQUIRE(c3.toString() == "Ace of Spades");
 	}
 }
+TEST_CASE("Test Deck")
+{
+	SECTION("Test initializing deck")
+	{
+		Deck d1();
+
+		REQUIRE(d1.size() == 52);
+	}
+
+}
