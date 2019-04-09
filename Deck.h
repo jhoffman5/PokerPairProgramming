@@ -12,4 +12,4 @@ public:
     
 private:
     vector<Card> deck;
-}
+};
