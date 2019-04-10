@@ -76,7 +76,25 @@ TEST_CASE("Test Deck")
 	{
 		Deck d;
 
-		//d = d.shuffle();
+		d.shuffle();
+
+		REQUIRE(d.deal(5).size() == 5);
+
+		REQUIRE_THROWS(d.deal(60));
+
+	}
+}
+TEST_CASE("S")
+{
+	SECTION("Test Deal")
+	{
+		Deck d;
+
+		d.shuffle();
+
+		REQUIRE(d.deal(5).size() == 5);
+
+		REQUIRE_THROWS(d.deal(60));
 
 	}
 }

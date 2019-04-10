@@ -14,6 +14,7 @@ public:
     vector<string> getDeck();
 
     void shuffle();
+    vector<string> deal(int num);
 
 private:
     vector<string> deck;

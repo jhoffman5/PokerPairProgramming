@@ -29,10 +29,27 @@ void Deck::shuffle()
         retDeck[i] = retDeck[pos];
         retDeck[pos] = temp;
     }
-    
+
     deck = retDeck;
 }
 vector<string> Deck::getDeck()
 {
     return deck;
+}
+vector<string> Deck::deal(int num)
+{
+    vector<string> hand;
+    if(num > deck.size())
+    {
+        throw "Not enough cards to deal";
+    }
+    else
+    {
+        for(int i = 0; i < num; i++)
+        {
+            hand.push_back(deck[deck.size() - 1]);
+            deck.pop_back();
+        }
+    }
+    return hand;
 }
