@@ -65,4 +65,10 @@ TEST_CASE("Test Deck")
 		
 	}
 
+	SECTION("Test Shuffle")
+	{
+		Deck d;
+
+		REQUIRE(d.getDeck() != d.shuffle());
+	}
 }

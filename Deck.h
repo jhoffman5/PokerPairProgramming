@@ -11,6 +11,10 @@ public:
     Deck();
     
     int getSize();
+    vector<string> getDeck();
+
+    vector<string> shuffle();
+
 private:
-    vector<Card> deck;
+    vector<string> deck;
 };
