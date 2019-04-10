@@ -61,7 +61,8 @@ TEST_CASE("Test Deck")
 	{
 		Deck d1;
 
-		//REQUIRE(d1.size() == 52);
+		REQUIRE(d1.getSize() == 52);
+		
 	}
 
 }

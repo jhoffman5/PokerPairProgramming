@@ -10,6 +10,7 @@ class Deck
 public:
     Deck();
     
+    int getSize();
 private:
     vector<Card> deck;
 };
