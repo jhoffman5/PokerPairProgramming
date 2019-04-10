@@ -81,7 +81,7 @@ TEST_CASE("Test Deck")
 
 		REQUIRE(d.deal(5).size() == 5);
 
-		REQUIRE(d.getSize()==47);
+		REQUIRE(d.getSize() == 47);
 
 		REQUIRE_THROWS(d.deal(60));
 

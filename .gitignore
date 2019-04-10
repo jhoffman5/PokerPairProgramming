@@ -1,4 +1,6 @@
-.bin
-.ipch
-.json
-.sqlite
+*.bin
+*.ipch
+*.json
+*.sqlite
+*.db
+*.suo
