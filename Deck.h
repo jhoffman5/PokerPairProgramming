@@ -13,7 +13,7 @@ public:
     int getSize();
     vector<string> getDeck();
 
-    vector<string> shuffle();
+    void shuffle();
 
 private:
     vector<string> deck;

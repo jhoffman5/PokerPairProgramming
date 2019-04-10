@@ -19,7 +19,7 @@ int Deck::getSize()
 {
     return deck.size();
 }
-vector<string> Deck::shuffle()
+void Deck::shuffle()
 {
     vector<string> retDeck = deck;
     for (size_t i = 0; i < retDeck.size(); i++)
@@ -29,7 +29,8 @@ vector<string> Deck::shuffle()
         retDeck[i] = retDeck[pos];
         retDeck[pos] = temp;
     }
-    return retDeck;
+    
+    deck = retDeck;
 }
 vector<string> Deck::getDeck()
 {

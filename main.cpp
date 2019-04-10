@@ -64,11 +64,19 @@ TEST_CASE("Test Deck")
 		REQUIRE(d1.getSize() == 52);
 		
 	}
-
 	SECTION("Test Shuffle")
+	{
+		Deck d1;
+		Deck d2 = d1;
+		d2.shuffle();
+
+		REQUIRE(d1.getDeck() != d2.getDeck());
+	}
+	SECTION("Test Deal")
 	{
 		Deck d;
 
-		REQUIRE(d.getDeck() != d.shuffle());
+		//d = d.shuffle();
+
 	}
 }
