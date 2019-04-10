@@ -89,3 +89,18 @@ TEST_CASE("Test Deck")
 		REQUIRE_THROWS(d.deal(60));
 	}
 }
+TEST_CASE("Test Evaluator")
+{
+	SECTION("Test Royal Flush")
+	{
+		vector<Card> royalFlushHand;
+		for(int i = 8; i < 15; i++)
+		{
+			Card c(i, "Hearts");
+			royalFlushHand.push_back(c);
+		}
+
+		PokerEvaluator evaluateThis(royalFlushHand);
+		REQUIRE(evaluateThis.evaluate() == "Royal Flush");
+	}
+}

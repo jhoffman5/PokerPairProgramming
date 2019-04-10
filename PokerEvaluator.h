@@ -13,6 +13,8 @@ class PokerEvaluator
 
 		void setHand(vector<Card> cards);
 
+        string evaluate();
+        bool isRoyalFlush();
     private:
 		vector<Card> hand;
 };
