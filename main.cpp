@@ -101,6 +101,19 @@ TEST_CASE("Test Evaluator")
 		}
 
 		PokerEvaluator evaluateThis(royalFlushHand);
+		//Should pass
 		REQUIRE(evaluateThis.evaluate() == "Royal Flush");
+
+		royalFlushHand.clear();
+		//---------------------
+		for(int i = 2; i < 9; i++)
+		{
+			Card c(i, "Hearts");
+			royalFlushHand.push_back(c);
+		}
+
+		evaluateThis.setHand(royalFlushHand);
+		//evaluateThis doesn't have a royal flush now
+		REQUIRE(evaluateThis.evaluate() != "Royal Flush");
 	}
 }

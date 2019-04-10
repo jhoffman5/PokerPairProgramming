@@ -49,7 +49,8 @@ bool PokerEvaluator::isRoyalFlush()
             spades++;
         }
     }
-	if(!(hearts>4)||(diamonds>4)||(clubs>4)||(spades>4))
+
+	if(!((hearts>4)||(diamonds>4)||(clubs>4)||(spades>4)))
     {
         return false;
     }
@@ -67,8 +68,10 @@ bool PokerEvaluator::isRoyalFlush()
     bool tenInHand = false;
     for(int i = 0; i < hand.size(); i++)
     {
-        if(hand[i].getNumericValue()==10 && hand[i].getSuit() == flushSuit)
-            tenInHand = true;
+		if ((hand[i].getNumericValue() == 10) && (hand[i].getSuit() == flushSuit)) {
+			tenInHand = true;
+			break;
+		}
     }
 
     if(!tenInHand)
@@ -77,8 +80,10 @@ bool PokerEvaluator::isRoyalFlush()
     bool jackInHand = false;
     for(int i = 0; i < hand.size(); i++)
     {
-        if(hand[i].getNumericValue()==11 && hand[i].getSuit() == flushSuit)
-            jackInHand = true;
+		if (hand[i].getNumericValue() == 11 && hand[i].getSuit() == flushSuit) {
+			jackInHand = true;
+			break;
+		}
     }
 
     if(!jackInHand)
@@ -87,8 +92,10 @@ bool PokerEvaluator::isRoyalFlush()
     bool queenInHand = false;
     for(int i = 0; i < hand.size(); i++)
     {
-        if(hand[i].getNumericValue()==12 && hand[i].getSuit() == flushSuit)
-            queenInHand = true;
+		if (hand[i].getNumericValue() == 12 && hand[i].getSuit() == flushSuit) {
+			queenInHand = true;
+			break;
+		}
     }
 
     if(!queenInHand)
@@ -97,8 +104,11 @@ bool PokerEvaluator::isRoyalFlush()
     bool kingInHand = false;
     for(int i = 0; i < hand.size(); i++)
     {
-        if(hand[i].getNumericValue()==13 && hand[i].getSuit() == flushSuit)
-            kingInHand = true;
+		if (hand[i].getNumericValue() == 13 && hand[i].getSuit() == flushSuit) {
+			kingInHand = true;
+			break;
+		}
+	
     }
 
     if(!kingInHand)
@@ -107,12 +117,14 @@ bool PokerEvaluator::isRoyalFlush()
     bool aceInHand = false;
     for(int i = 0; i < hand.size(); i++)
     {
-        if(hand[i].getNumericValue()==14 && hand[i].getSuit() == flushSuit)
-            aceInHand = true;
+		if (hand[i].getNumericValue() == 14 && hand[i].getSuit() == flushSuit) {
+			aceInHand = true;
+			break;
+		}
     }
 
     if(!aceInHand)
         return false;
-
-    return true;
+	
+	return true;
 }
