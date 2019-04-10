@@ -5,6 +5,7 @@ using namespace std;
 #include "catch.hpp"
 #include "Card.h"
 #include "Deck.h"
+#include "PokerEvaluator.h"
 int main()
 {
 	cout << "Hello World!!!" << endl;
