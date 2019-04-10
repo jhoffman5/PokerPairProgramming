@@ -9,6 +9,10 @@ using namespace std;
 class PokerEvaluator
 {
     public:
+		PokerEvaluator(vector<Card> cards);
+
+		void setHand(vector<Card> cards);
 
     private:
-}
+		vector<Card> hand;
+};

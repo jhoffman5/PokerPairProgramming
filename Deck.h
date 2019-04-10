@@ -11,11 +11,11 @@ public:
     Deck();
     
     int getSize();
-    vector<string> getDeck();
+    vector<Card> getDeck();
 
     void shuffle();
-    vector<string> deal(int num);
+    vector<Card> deal(int num);
 
 private:
-    vector<string> deck;
+    vector<Card> deck;
 };

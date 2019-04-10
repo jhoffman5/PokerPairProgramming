@@ -10,8 +10,7 @@ Deck::Deck()
     for(int suit = 0; suit < 4; suit++){
         for(int num = 2; num < 15; num++){
             Card c(num, suits[suit]);
-            string card = c.toString();
-            deck.push_back(card);
+            deck.push_back(c);
         }
     }
 }
@@ -21,24 +20,24 @@ int Deck::getSize()
 }
 void Deck::shuffle()
 {
-    vector<string> retDeck = deck;
+    vector<Card> retDeck = deck;
     for (size_t i = 0; i < retDeck.size(); i++)
     {
         size_t pos = rand() % 52;
-        string temp = retDeck[i];
+        Card temp = retDeck[i];
         retDeck[i] = retDeck[pos];
         retDeck[pos] = temp;
     }
 
     deck = retDeck;
 }
-vector<string> Deck::getDeck()
+vector<Card> Deck::getDeck()
 {
     return deck;
 }
-vector<string> Deck::deal(int num)
+vector<Card> Deck::deal(int num)
 {
-    vector<string> hand;
+    vector<Card> hand;
     if(num > deck.size())
     {
         throw "Not enough cards to deal";

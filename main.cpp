@@ -6,6 +6,7 @@ using namespace std;
 #include "Card.h"
 #include "Deck.h"
 #include "PokerEvaluator.h"
+
 int main()
 {
 	cout << "Hello World!!!" << endl;
@@ -63,15 +64,17 @@ TEST_CASE("Test Deck")
 		Deck d1;
 
 		REQUIRE(d1.getSize() == 52);
-		
 	}
 	SECTION("Test Shuffle")
 	{
 		Deck d1;
 		Deck d2 = d1;
 		d2.shuffle();
-
-		REQUIRE(d1.getDeck() != d2.getDeck());
+		
+		vector<Card> d1Deck = d1.getDeck();
+		vector<Card> d2Deck = d2.getDeck();
+		
+		REQUIRE(d1Deck[0].toString() != d2Deck[0].toString());
 	}
 	SECTION("Test Deal")
 	{
@@ -84,6 +87,5 @@ TEST_CASE("Test Deck")
 		REQUIRE(d.getSize() == 47);
 
 		REQUIRE_THROWS(d.deal(60));
-
 	}
 }
