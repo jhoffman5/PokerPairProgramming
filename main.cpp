@@ -86,7 +86,7 @@ TEST_CASE("Test Deck")
 
 		REQUIRE(d.getSize() == 47);
 
-		REQUIRE_THROWS(d.deal(60));
+		REQUIRE_THROWS(d.deal(101));
 	}
 }
 TEST_CASE("Test Evaluator")
@@ -126,5 +126,24 @@ TEST_CASE("Test Evaluator")
 		PokerEvaluator evaluateThis(straightFlush);
 
 		REQUIRE(evaluateThis.evaluate() == "Straight Flush");
+
+		vector<Card> notStraightFlush;
+		for(int i = 2; i < 5; i++)
+		{
+			Card c(i, "Hearts");
+			notStraightFlush.push_back(c);
+		}
+		for(int i = 5; i < 9; i++)
+		{
+			Card c(i, "Clubs");
+			notStraightFlush.push_back(c);
+		}
+
+		evaluateThis.setHand(notStraightFlush);
+		REQUIRE(evaluateThis.evaluate() != "Straight Flush");	
+	}
+	SECTION("Test Flush")
+	{
+
 	}
 }
