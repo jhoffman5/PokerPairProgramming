@@ -10,6 +10,7 @@ PokerEvaluator::PokerEvaluator(vector<Card> cards)
 }
 void PokerEvaluator::setHand(vector<Card> cards)
 {
+    hand.clear();
 	for (int i = 0; i < cards.size(); i++)
 		hand.push_back(cards[i]);
 }
@@ -65,66 +66,21 @@ bool PokerEvaluator::isRoyalFlush()
     else
         flushSuit = "Spades";
 
-    bool tenInHand = false;
-    for(int i = 0; i < hand.size(); i++)
+    int flushCards = 0;
+    for(size_t i = 0; i < hand.size(); i++)
     {
-		if ((hand[i].getNumericValue() == 10) && (hand[i].getSuit() == flushSuit)) {
-			tenInHand = true;
-			break;
-		}
+        if(hand[i].getNumericValue()>9 && hand[i].getSuit() == flushSuit)
+        {
+            flushCards++;
+        }
     }
 
-    if(!tenInHand)
-        return false;
-    
-    bool jackInHand = false;
-    for(int i = 0; i < hand.size(); i++)
+    if(flushCards==5)
     {
-		if (hand[i].getNumericValue() == 11 && hand[i].getSuit() == flushSuit) {
-			jackInHand = true;
-			break;
-		}
+        return true;
     }
-
-    if(!jackInHand)
-        return false;
-
-    bool queenInHand = false;
-    for(int i = 0; i < hand.size(); i++)
+    else
     {
-		if (hand[i].getNumericValue() == 12 && hand[i].getSuit() == flushSuit) {
-			queenInHand = true;
-			break;
-		}
-    }
-
-    if(!queenInHand)
         return false;
-
-    bool kingInHand = false;
-    for(int i = 0; i < hand.size(); i++)
-    {
-		if (hand[i].getNumericValue() == 13 && hand[i].getSuit() == flushSuit) {
-			kingInHand = true;
-			break;
-		}
-	
     }
-
-    if(!kingInHand)
-        return false;
-
-    bool aceInHand = false;
-    for(int i = 0; i < hand.size(); i++)
-    {
-		if (hand[i].getNumericValue() == 14 && hand[i].getSuit() == flushSuit) {
-			aceInHand = true;
-			break;
-		}
-    }
-
-    if(!aceInHand)
-        return false;
-	
-	return true;
 }

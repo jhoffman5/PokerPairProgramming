@@ -104,15 +104,14 @@ TEST_CASE("Test Evaluator")
 		//Should pass
 		REQUIRE(evaluateThis.evaluate() == "Royal Flush");
 
-		royalFlushHand.clear();
-		//---------------------
+		vector<Card> notARoyalFlush;
 		for(int i = 2; i < 9; i++)
 		{
 			Card c(i, "Hearts");
-			royalFlushHand.push_back(c);
+			notARoyalFlush.push_back(c);
 		}
 
-		evaluateThis.setHand(royalFlushHand);
+		evaluateThis.setHand(notARoyalFlush);
 		//evaluateThis doesn't have a royal flush now
 		REQUIRE(evaluateThis.evaluate() != "Royal Flush");
 	}
