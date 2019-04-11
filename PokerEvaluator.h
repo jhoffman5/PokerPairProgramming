@@ -12,9 +12,14 @@ class PokerEvaluator
 		PokerEvaluator(vector<Card> cards);
 
 		void setHand(vector<Card> cards);
+        void sortByNumeric();
 
         string evaluate();
+
         bool isRoyalFlush();
+        bool isStraightFlush();
+        bool isFlush();
+
     private:
 		vector<Card> hand;
 };

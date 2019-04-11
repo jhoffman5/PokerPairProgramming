@@ -115,4 +115,16 @@ TEST_CASE("Test Evaluator")
 		//evaluateThis doesn't have a royal flush now
 		REQUIRE(evaluateThis.evaluate() != "Royal Flush");
 	}
+	SECTION("Test Straight Flush")
+	{
+		vector<Card> straightFlush;
+		for(int i = 2; i < 9; i++)
+		{
+			Card c(i, "Hearts");
+			straightFlush.push_back(c);
+		}
+		PokerEvaluator evaluateThis(straightFlush);
+
+		REQUIRE(evaluateThis.evaluate() == "Straight Flush");
+	}
 }
