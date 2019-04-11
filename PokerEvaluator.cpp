@@ -103,16 +103,79 @@ bool PokerEvaluator::isRoyalFlush()
 }
 bool PokerEvaluator::isStraightFlush()
 {
-    int highestCard = 0;
+    int hearts = 0;
+    int diamonds = 0;
+    int spades = 0;
+    int clubs = 0;
     for(int i = 0; i < hand.size(); i++)
     {
-        if(hand[i].getNumericValue() > highestCard)
+        if(hand[i].getSuit() == "Hearts")
         {
-            highestCard = i;
+            hearts++;
+        }
+        else if(hand[i].getSuit() == "Diamonds")
+        {
+            diamonds++;
+        }
+        else if(hand[i].getSuit() == "Clubs")
+        {
+            clubs++;
+        }
+        else
+        {
+            spades++;
         }
     }
 
+	if(!((hearts>4)||(diamonds>4)||(clubs>4)||(spades>4)))
+    {
+        return false;
+    }
 
+    string flushSuit;
+    if(hearts>4)
+        flushSuit = "Hearts";
+    else if(diamonds>4)
+        flushSuit = "Diamonds";
+    else if(clubs>4)
+        flushSuit = "Clubs";
+    else
+        flushSuit = "Spades";
+    
+    vector<Card> flushHand;
+    vector<Card> saveHand = hand;
+
+    for(int i = 0; i < hand.size(); i++)
+    {
+        if(hand[i].getSuit() == flushSuit)
+        {
+            flushHand.push_back(hand[i]);
+        }
+    }
+
+    hand = flushHand;
+    
+    (*this).sortByNumeric();
+
+    int counter = 0;
+
+    for(int i = 0; i < hand.size() - 1; i++)
+    {
+        if(hand[i].getNumericValue() != hand[i+1].getNumericValue() - 1)
+        {
+            counter = 0;
+        }
+        counter++;
+        if(counter==4)
+        {
+            return true;
+        }
+    }
+
+    return false;
+
+    //restore the hand
+    hand = saveHand;
 }
 bool PokerEvaluator::isFlush()
 {
@@ -148,5 +211,4 @@ bool PokerEvaluator::isFlush()
     {
         return true;
     }
-    
 }
