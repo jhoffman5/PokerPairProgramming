@@ -144,6 +144,19 @@ TEST_CASE("Test Evaluator")
 	}
 	SECTION("Test Flush")
 	{
+		vector<Card> flush;
+		for (int i = 2; i < 5; i++)
+		{
+			Card c(i, "Hearts");
+			flush.push_back(c);
+		}
+		for (int i = 7; i < 11; i++)
+		{
+			Card c(i, "Hearts");
+			flush.push_back(c);
+		}
+		PokerEvaluator evaluateThis(flush);
 
+		REQUIRE(evaluateThis.evaluate() == "Flush");
 	}
 }

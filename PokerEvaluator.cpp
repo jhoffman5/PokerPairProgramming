@@ -37,6 +37,10 @@ string PokerEvaluator::evaluate()
     {
         return "Straight Flush";
     }
+	else if (isFlush())
+	{
+		return "Flush";
+	}
 	else
 	{
 		return "High Card";
@@ -165,7 +169,11 @@ bool PokerEvaluator::isStraightFlush()
         {
             counter = 0;
         }
-        counter++;
+		else
+		{
+			counter++;
+		}
+        
         if(counter==4)
         {
             return true;
