@@ -57,6 +57,10 @@ string PokerEvaluator::evaluate()
     {
         return "Three Of A Kind";
     }
+    else if(isTwoPair())
+    {
+        return "Two Pair";
+    }
 	else
 	{
 		return "High Card";
@@ -339,5 +343,34 @@ bool PokerEvaluator::isThreeOfAKind()
 		{
 			 return true;
 		}
+	}
+
+	return false;
+}
+bool PokerEvaluator::isTwoPair()
+{
+    int cardVals[15] = { 0 };
+
+	for (int i = 0; i < hand.size(); i++)
+	{
+		cardVals[hand[i].getNumericValue()]++;
+	}
+
+	int hasPairs = 0;
+	for (int i = 2; i < 15; i++)
+	{
+		if (cardVals[i] == 2)
+		{
+			hasPairs++;
+		}
+	}
+
+	if (hasPairs == 2)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
