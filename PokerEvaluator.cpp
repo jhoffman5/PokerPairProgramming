@@ -37,6 +37,14 @@ string PokerEvaluator::evaluate()
     {
         return "Straight Flush";
     }
+    else if(isFourOfAKind())
+    {
+        return "Four Of A Kind";
+    }
+    else if(isFullHouse())
+    {
+        return "Full House";
+    }
 	else if (isFlush())
 	{
 		return "Flush";
@@ -173,7 +181,7 @@ bool PokerEvaluator::isStraightFlush()
 		{
 			counter++;
 		}
-        
+
         if(counter==4)
         {
             return true;
@@ -184,6 +192,57 @@ bool PokerEvaluator::isStraightFlush()
 
     //restore the hand
     hand = saveHand;
+}
+bool PokerEvaluator::isFourOfAKind()
+{
+    int cardVals[15] = {0};
+
+    for(int i = 0; i < hand.size(); i++)
+    {
+        cardVals[hand[i].getNumericValue()]++;
+    }
+
+    for(int i = 2; i < 15; i++)
+    {
+        if(cardVals[i] > 3)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+bool::PokerEvaluator::isFullHouse()
+{
+	int cardVals[15] = { 0 };
+
+	for (int i = 0; i < hand.size(); i++)
+	{
+		cardVals[hand[i].getNumericValue()]++;
+	}
+
+	bool hasThree = false;
+	bool hasTwo = false;
+	for (int i = 2; i < 15; i++)
+	{
+		if (cardVals[i] == 3)
+		{
+			 hasThree = true;
+		}
+		if (cardVals[i] == 2)
+		{
+			hasTwo = true;
+		}
+	}
+
+	if (hasThree && hasTwo)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 bool PokerEvaluator::isFlush()
 {

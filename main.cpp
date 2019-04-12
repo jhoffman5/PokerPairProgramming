@@ -159,4 +159,48 @@ TEST_CASE("Test Evaluator")
 
 		REQUIRE(evaluateThis.evaluate() == "Flush");
 	}
+	SECTION("Test Four of a Kind")
+	{
+		Card a(2, "Spades");
+		Card b(2, "Diamonds");
+		Card c(2,"Clubs");
+		Card d(2, "Hearts");
+		Card e(4,"Diamonds");
+		Card f(3,"Clubs");
+		Card g(9,"Hearts");
+
+		vector<Card> fourOfAKind = {a,b,c,d,e,f,g};
+		PokerEvaluator evaluateThis(fourOfAKind);
+
+		REQUIRE(evaluateThis.evaluate() == "Four Of A Kind");
+
+		b.setNumericValue(3);
+		
+		vector<Card> notFourOfAKind = { a,b,c,d,e,f,g };
+		evaluateThis.setHand(notFourOfAKind);
+		
+		REQUIRE(evaluateThis.evaluate() != "Four Of A Kind");
+	}
+	SECTION("Test Full House")
+	{
+		Card a(2, "Spades");
+		Card b(2, "Diamonds");
+		Card c(2,"Clubs");
+		Card d(3, "Hearts");
+		Card e(3,"Diamonds");
+		Card f(7,"Clubs");
+		Card g(9,"Hearts");
+
+		vector<Card> fullHouse = {a,b,c,d,e,f,g};
+		PokerEvaluator evaluateThis(fullHouse);
+
+		REQUIRE(evaluateThis.evaluate() == "Full House");	
+
+		b.setNumericValue(9);
+
+		vector<Card> notFull = { a,b,c,d,e,f,g };
+		evaluateThis.setHand(notFull);
+
+		REQUIRE(evaluateThis.evaluate() != "Full House");
+	}
 }

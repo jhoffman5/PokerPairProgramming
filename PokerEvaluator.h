@@ -18,6 +18,8 @@ class PokerEvaluator
 
         bool isRoyalFlush();
         bool isStraightFlush();
+        bool isFourOfAKind();
+		bool isFullHouse();
         bool isFlush();
 
     private:
