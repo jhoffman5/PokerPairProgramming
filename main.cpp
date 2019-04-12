@@ -248,4 +248,19 @@ TEST_CASE("Test Evaluator")
 
 		REQUIRE(evaluateThis.evaluate() == "Two Pair");
 	}
+	SECTION("Test Pair")
+	{
+		Card a(2, "Spades");
+		Card b(4, "Diamonds");
+		Card c(3, "Clubs");
+		Card d(3, "Hearts");
+		Card e(12, "Diamonds");
+		Card f(10, "Clubs");
+		Card g(9, "Hearts");
+
+		vector<Card> pair = { a,b,c,d,e,f,g };
+		PokerEvaluator evaluateThis(pair);
+
+		REQUIRE(evaluateThis.evaluate() == "Pair");
+	}
 }

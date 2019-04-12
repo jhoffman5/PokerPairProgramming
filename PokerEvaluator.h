@@ -24,7 +24,7 @@ class PokerEvaluator
 		bool isStraight();
         bool isThreeOfAKind();
         bool isTwoPair();
-
+        bool isPair();
 
     private:
 		vector<Card> hand;

@@ -61,6 +61,10 @@ string PokerEvaluator::evaluate()
     {
         return "Two Pair";
     }
+    else if(isPair())
+    {
+        return "Pair";
+    }
 	else
 	{
 		return "High Card";
@@ -373,4 +377,23 @@ bool PokerEvaluator::isTwoPair()
 	{
 		return false;
 	}
+}
+bool PokerEvaluator::isPair()
+{
+        int cardVals[15] = { 0 };
+
+	for (int i = 0; i < hand.size(); i++)
+	{
+		cardVals[hand[i].getNumericValue()]++;
+	}
+
+	for (int i = 2; i < 15; i++)
+	{
+		if (cardVals[i] == 2)
+		{
+			return true;
+		}
+    }
+
+    return false;
 }
