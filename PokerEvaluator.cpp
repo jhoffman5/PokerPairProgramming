@@ -49,6 +49,10 @@ string PokerEvaluator::evaluate()
 	{
 		return "Flush";
 	}
+	else if (isStraight())
+	{
+		return "Straight";
+	}
 	else
 	{
 		return "High Card";
@@ -278,4 +282,41 @@ bool PokerEvaluator::isFlush()
     {
         return true;
     }
+}
+bool PokerEvaluator::isStraight()
+{
+	vector<Card> originalHand = hand;
+
+	for (int i = 0; i < hand.size() - 1; i++)
+	{
+		if (hand[i].getNumericValue() == hand[i + 1].getNumericValue())
+		{
+			hand.erase(hand.begin() + i);
+		}
+	}
+
+	(*this).sortByNumeric();
+
+	int counter = 0;
+
+	for (int i = 0; i < hand.size() - 1; i++)
+	{
+		if (hand[i].getNumericValue() != hand[i + 1].getNumericValue() - 1)
+		{
+			counter = 0;
+		}
+		else
+		{
+			counter++;
+		}
+
+		if (counter == 4)
+		{
+			hand = originalHand;
+			return true;
+		}
+	}
+
+	hand = originalHand;
+	return false;
 }

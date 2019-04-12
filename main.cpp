@@ -203,4 +203,19 @@ TEST_CASE("Test Evaluator")
 
 		REQUIRE(evaluateThis.evaluate() != "Full House");
 	}
+	SECTION("Test Straight")
+	{
+		Card a(2, "Spades");
+		Card b(3, "Diamonds");
+		Card c(4, "Clubs");
+		Card d(5, "Hearts");
+		Card e(6, "Diamonds");
+		Card f(10, "Clubs");
+		Card g(9, "Hearts");
+
+		vector<Card> straight = { a,b,c,d,e,f,g };
+		PokerEvaluator evaluateThis(straight);
+
+		REQUIRE(evaluateThis.evaluate() == "Straight");
+	}
 }
