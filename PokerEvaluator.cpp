@@ -53,6 +53,10 @@ string PokerEvaluator::evaluate()
 	{
 		return "Straight";
 	}
+    else if(isThreeOfAKind())
+    {
+        return "Three Of A Kind";
+    }
 	else
 	{
 		return "High Card";
@@ -319,4 +323,21 @@ bool PokerEvaluator::isStraight()
 
 	hand = originalHand;
 	return false;
+}
+bool PokerEvaluator::isThreeOfAKind()
+{
+    int cardVals[15] = { 0 };
+
+	for (int i = 0; i < hand.size(); i++)
+	{
+		cardVals[hand[i].getNumericValue()]++;
+	}
+
+	for (int i = 2; i < 15; i++)
+	{
+		if (cardVals[i] == 3)
+		{
+			 return true;
+		}
+	}
 }

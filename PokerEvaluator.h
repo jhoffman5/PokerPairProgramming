@@ -22,6 +22,7 @@ class PokerEvaluator
 		bool isFullHouse();
         bool isFlush();
 		bool isStraight();
+        bool isThreeOfAKind();
 
     private:
 		vector<Card> hand;
